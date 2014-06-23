@@ -46,7 +46,8 @@ bool GetLine(TextFile& Input, std::wstring& dest)
 		{
 		case ' ':
 		case '\t':
-			while (InputPos < (int)Buffer.size() && (Buffer[InputPos] == '\t' || Buffer[InputPos] == ' ')) InputPos++;
+		case '\f':
+			while (InputPos < (int)Buffer.size() && (Buffer[InputPos] == '\t' || Buffer[InputPos] == ' ' || Buffer[InputPos] == '\f')) InputPos++;
 			if (CheckEndLine(Buffer,InputPos) == true)
 			{
 				return true;

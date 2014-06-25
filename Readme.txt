@@ -178,7 +178,14 @@ not opened files as well.
 
 3.2  Comments
 
-Both ; and // are supported for comments.
+Both ; and // are supported for comments by default.  If you
+require compatibility with a program that uses something
+else, a custom comment marker may be specified by using the
+.comment directive:
+
+  .comment #
+  # Now comments begin with hash/pound signs, and ; does
+  # nothing special.
 
 
 3.3  Labels
@@ -750,6 +757,13 @@ for more about functions.
 
 Closes the currently open function. See section 3.9 for more
 about functions.
+
+
+.comment marker
+
+Replaces the current comment marker with the given marker.
+The word default restores the default behavior where both ;
+and // are comment markers.
 
 
 4.2  MIPS Directives

@@ -39,6 +39,7 @@ typedef struct {
 	int IncludeNestingLevel;
 	int MacroNestingLevel;
 	int validationPasses;
+	std::wstring commentMarker;
 } tGlobal;
 
 enum eErrorLevel {ERROR_WARNING, ERROR_ERROR, ERROR_FATALERROR, ERROR_NOTICE };

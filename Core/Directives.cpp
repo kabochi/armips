@@ -365,6 +365,24 @@ bool DirectiveNocash(ArgumentList& List, int flags)
 	return true;
 }
 
+bool DirectiveComment(ArgumentList& List, int flags)
+{
+	if (List.size() == 0)
+	{
+		Global.commentMarker = L"";
+	}
+	else if (List.size() == 1)
+	{
+		Global.commentMarker = List[0].text;
+	}
+	else
+	{
+		Logger::printError(Logger::Error,L"Invalid arguments");
+		return false;
+	}
+	return true;
+}
+
 bool DirectiveFill(ArgumentList& List, int flags)
 {
 	CDirectiveFill* Command = new CDirectiveFill();
@@ -791,6 +809,8 @@ const tDirective Directives[] = {
 	{ L".sym",				1,	1,	&DirectiveSym,				0 },
 	{ L".importobj",		1,	2,	&DirectiveImportObj,		0 },
 	{ L".importlib",		1,	2,	&DirectiveImportObj,		0 },
+
+	{ L".comment",			0,	1,	&DirectiveComment,			0 },
 
 	{ L".function",			1,	1,	&DirectiveStartFunction,	0 },
 	{ L".func",				1,	1,	&DirectiveStartFunction,	0 },

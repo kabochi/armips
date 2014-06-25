@@ -18,14 +18,23 @@ typedef struct {
 	std::wstring params;
 } tTextData;
 
-inline bool CheckEndLine(std::wstring& string, int pos)
+static inline bool CheckComment(const std::wstring& string, int pos)
+{
+	const std::wstring& comment = Global.commentMarker;
+	if (comment.size() == 0)
+		return false;
+	if (comment == L"default")
+		return string[pos] == ';' || string.substr(pos, 2) == L"//";
+	return string.substr(pos, comment.size()) == comment;
+}
+
+static inline bool CheckEndLine(std::wstring& string, int pos)
 {
 	if (pos >= (int)string.size()) return true;
 
 	if (string[pos] == 0) return true;
 	if (string[pos] == '\n') return true;
-	if (string[pos] == ';') return true;
-	if (pos+1 < (int)string.size() && string[pos+0] == '/' && string[pos+1] == '/') return true;
+	if (CheckComment(string, pos)) return true;
 	return false;
 }
 
@@ -470,6 +479,8 @@ bool runAssembler(AssemblerArguments& arguments)
 	Global.FileInfo.TotalLineCount = 0;
 	Global.FileInfo.LineNumber = 0;
 	Global.FileInfo.FileNum = 0;
+
+	Global.commentMarker = L"default";
 
 	Arm.clear();
 

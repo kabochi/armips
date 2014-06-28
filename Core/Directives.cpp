@@ -753,6 +753,7 @@ const tDirective Directives[] = {
 
 	{ L".byte",				1,	-1,	&DirectiveData,				DIRECTIVE_DATA_8 },
 	{ L".halfword",			1,	-1,	&DirectiveData,				DIRECTIVE_DATA_16 },
+	{ L".half",				1,	-1,	&DirectiveData,				DIRECTIVE_DATA_16 },
 	{ L".word",				1,	-1,	&DirectiveData,				DIRECTIVE_DATA_32 },
 	{ L".db",				1,	-1,	&DirectiveData,				DIRECTIVE_DATA_8 },
 	{ L".dh",				1,	-1,	&DirectiveData,				DIRECTIVE_DATA_16|DIRECTIVE_NOCASHOFF },

@@ -553,6 +553,7 @@ Value can also be a string in quotation marks.
 
 
 .halfword value[,...]
+.half value[,...]
 .dh value[,...]
 dcw value[,...]
 
